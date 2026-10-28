@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+*.egg-info/
+.venv/
+outputs/
+*.zip
+*.mp4
+
+# Curated README demonstrations
+!docs/media/*.mp4
