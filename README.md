@@ -167,7 +167,36 @@ before treating these differences as general.
 
 ### LunarLander
 
-Results will be added after training is complete.
+SAC results from a single training seed (42) with 250,000 interactions per
+condition. Early stopping was enabled but did not trigger. Scores are measured on
+the 20 validation B scenarios, which also selected each checkpoint; the held-out
+test has not been run. With 20 scenarios, one episode changes a rate by 5
+percentage points.
+
+| Algorithm | Engine lag | Selected checkpoint | Landed | Failed | Timeout | Mean return |
+|---|---|---|---|---|---|---|
+| SAC | 0 s | 240,000 steps | 100% | 0% | 0% | 272.6 |
+| SAC | 0.1 s | 250,000 steps | 100% | 0% | 0% | 271.4 |
+
+Efficiency on scenarios landed under both conditions (20 of 20):
+
+| Algorithm | Steps (0 s → 0.1 s) | Main-engine use (0 s → 0.1 s) | Side-engine use (0 s → 0.1 s) |
+|---|---|---|---|
+| SAC | 209.9 → 234.8 | 1.79 → 2.01 power·s | 0.67 → 0.37 power·s |
+
+In this run, both SAC policies landed in every validation scenario with nearly
+identical returns. With the 0.1 s command lag, episodes took about 12% longer
+(25 more steps, 0.5 s) and used more main-engine power but less side-engine power.
+
+<details>
+<summary>SAC learning curves and trajectories</summary>
+
+![SAC LunarLander learning curves](docs/media/lunarlander_sac_learning_curves.png)
+![SAC LunarLander trajectories](docs/media/lunarlander_sac_trajectories.png)
+
+</details>
+
+PPO results will be added after training is complete.
 
 ## Trajectories and videos
 
